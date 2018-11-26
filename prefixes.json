@@ -1,0 +1,23 @@
+const Discord = require('discord.js');
+prefixler = JSON.parse(fs.readFileSync("./prefixes.json")),
+
+exports.run = (client, message, args) => {
+            if (!message.member.hasPermission("ADMINISTRATOR")) return msg.reply("Bunu yapmak için yeterli yetkiye sahip deðilsin!");
+            var prefixStr = args[1];
+             msg.reply(`Baþarýyla ${guildPrefix} olan ön-ekinizi ${prefixStr} olarak ayarladýnýz.`);
+             prefixler[msg.guild.id] = prefixStr;
+             writeWithFS("./prefixes.json", prefixler);
+};
+
+exports.conf = {
+  enabled: true,
+  guildOnly: false,
+  aliases: ['ön-ek', 'ek'],
+  permLevel: 4
+};
+
+exports.help = {
+  name: 'ön-ek',
+  description: 'Ön-ekinizi deðiþtirir.',
+  usage: 'ön-ek'
+};
